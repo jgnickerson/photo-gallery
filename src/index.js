@@ -22,8 +22,9 @@ let images = []
 for (var i = 0; i < 20; i++) {
   var width = getRandomSize(200, 400);
   var height = getRandomSize(200, 400);
+  let div = document.createElement('div');
+  div.className = 'grid-item';
   let image = document.createElement('img');
-  image.className = 'grid-item';
   image.src = 'http://www.lorempixel.com/' + width + '/' + height + '/cats';
 
   //may not be the best way to do it, downsizing may negatively affect quality.
@@ -32,8 +33,10 @@ for (var i = 0; i < 20; i++) {
     image.style.width = '200px';
   }
 
-  grid.appendChild(image);
-  msnry.appended(image);
+  div.appendChild(image);
+
+  grid.appendChild(div);
+  msnry.appended(div);
   //images.push(image);
 
 }
