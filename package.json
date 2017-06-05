@@ -6,7 +6,8 @@
   "author": "Gordon Nickerson",
   "license": "MIT",
   "dependencies": {
-    "masonry-layout": "^4.2.0"
+    "masonry-layout": "^4.2.0",
+    "vanilla-lazyload": "^7.2.1"
   },
   "devDependencies": {
     "babel-core": "^6.24.1",
