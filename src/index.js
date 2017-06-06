@@ -1,17 +1,18 @@
 import Masonry from 'masonry-layout';
+import imagesLoaded from 'imagesloaded';
 import './index.css'
 
 let grid = document.createElement('div');
 grid.className = 'grid';
 
-let msnry = new Masonry(grid, {
-  itemSelector: '.grid-item',
-  columnWidth: '.grid-sizer',
-  percentPosition: true,
-  horizontalOrder: true,
-  gutter: 10,
-  transitionDuration: 0
-});
+// let msnry = new Masonry(grid, {
+//   itemSelector: '.grid-item',
+//   columnWidth: '.grid-sizer',
+//   percentPosition: true,
+//   horizontalOrder: true,
+//   gutter: 10,
+//   transitionDuration: 0
+// });
 
 document.body.appendChild(grid);
 
@@ -75,7 +76,7 @@ urls.forEach(url => {
 
   div.appendChild(img);
   grid.appendChild(div);
-  msnry.appended(img);
+  //msnry.appended(img);
 });
 
 // for (var i = 0; i < 20; i++) {
@@ -100,5 +101,17 @@ urls.forEach(url => {
 //
 // }
 //
-// msnry.appended(images);
-msnry.layout();
+
+
+imagesLoaded(grid, ()=>{
+  let msnry = new Masonry(grid, {
+    itemSelector: '.grid-item',
+    columnWidth: '.grid-sizer',
+    percentPosition: true,
+    horizontalOrder: true,
+    gutter: 10,
+    transitionDuration: 0
+  });
+
+  msnry.layout();
+});
