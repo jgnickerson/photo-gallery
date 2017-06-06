@@ -36,6 +36,7 @@ let urls = [
   'https://c1.staticflickr.com/4/3829/32720628284_148d94b5cb_o.jpg',
   'https://c1.staticflickr.com/3/2911/33435250581_3771783871_o.jpg',
   'https://c1.staticflickr.com/4/3678/33435244401_01aa5f1120_o.jpg',
+  'https://c1.staticflickr.com/6/5560/30969987836_406b4aab7e_o.jpg',
   'https://c1.staticflickr.com/3/2905/32720602474_b7aee347e8_o.jpg'
 ];
 
