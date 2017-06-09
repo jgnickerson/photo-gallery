@@ -1201,11 +1201,7 @@ esutils@^2.0.2:
   version "2.0.2"
   resolved "https://registry.yarnpkg.com/esutils/-/esutils-2.0.2.tgz#0abf4f1caa5bcb1f7a9d8acc6dea4faaa04bac9b"
 
-ev-emitter@^1.0.0:
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/ev-emitter/-/ev-emitter-1.1.0.tgz#fa32958ce319f4552a404af8ca16f159851fed84"
-
-ev-emitter@~1.0.0:
+ev-emitter@^1.0.0, ev-emitter@~1.0.0:
   version "1.0.3"
   resolved "https://registry.yarnpkg.com/ev-emitter/-/ev-emitter-1.0.3.tgz#ee5ef74b6ed28d911b32ddcbfc97867f580937bc"
 
@@ -1278,7 +1274,7 @@ find-up@^1.0.0:
     path-exists "^2.0.0"
     pinkie-promise "^2.0.0"
 
-fizzy-ui-utils@^2.0.0:
+fizzy-ui-utils@^2.0.0, fizzy-ui-utils@^2.0.4:
   version "2.0.5"
   resolved "https://registry.yarnpkg.com/fizzy-ui-utils/-/fizzy-ui-utils-2.0.5.tgz#d72debc74d2c9d272dbcbb7b001707897f6c3210"
   dependencies:
@@ -1359,7 +1355,7 @@ get-caller-file@^1.0.1:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/get-caller-file/-/get-caller-file-1.0.2.tgz#f702e63127e7e231c160a80c1554acb70d5047e5"
 
-get-size@^2.0.2:
+get-size@^2.0.0, get-size@^2.0.2:
   version "2.0.2"
   resolved "https://registry.yarnpkg.com/get-size/-/get-size-2.0.2.tgz#555ea98ab8732e0c021e9e23e2219adcbe398e98"
 
@@ -1655,6 +1651,16 @@ isobject@^2.0.0:
   dependencies:
     isarray "1.0.0"
 
+isotope-layout@^3.0.4:
+  version "3.0.4"
+  resolved "https://registry.yarnpkg.com/isotope-layout/-/isotope-layout-3.0.4.tgz#f3ed8d15f8cfb3850b11777f1ca76e0a8bb5b73a"
+  dependencies:
+    desandro-matches-selector "^2.0.0"
+    fizzy-ui-utils "^2.0.4"
+    get-size "^2.0.0"
+    masonry-layout "^4.1.0"
+    outlayer "^2.1.0"
+
 isstream@~0.1.2:
   version "0.1.2"
   resolved "https://registry.yarnpkg.com/isstream/-/isstream-0.1.2.tgz#47e63f7af55afa6f92e1500e690eb8b8529c099a"
@@ -1737,6 +1743,10 @@ lazy-cache@^1.0.3:
   version "1.0.4"
   resolved "https://registry.yarnpkg.com/lazy-cache/-/lazy-cache-1.0.4.tgz#a1d78fc3a50474cb80845d3b3b6e1da49a446e8e"
 
+lazysizes@^4.0.0-rc1:
+  version "4.0.0-rc1"
+  resolved "https://registry.yarnpkg.com/lazysizes/-/lazysizes-4.0.0-rc1.tgz#41cc669f2e76bbbc9ade08ec7af31e6781173640"
+
 lcid@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/lcid/-/lcid-1.0.0.tgz#308accafa0bc483a3867b4b6f2b9506251d1b835"
@@ -1804,7 +1814,7 @@ macaddress@^0.2.8:
   version "0.2.8"
   resolved "https://registry.yarnpkg.com/macaddress/-/macaddress-0.2.8.tgz#5904dc537c39ec6dbefeae902327135fa8511f12"
 
-masonry-layout@^4.2.0:
+masonry-layout@^4.1.0, masonry-layout@^4.2.0:
   version "4.2.0"
   resolved "https://registry.yarnpkg.com/masonry-layout/-/masonry-layout-4.2.0.tgz#43835c6b6e0d72eff2c31a118c8000cccc4ab965"
   dependencies:
@@ -2946,10 +2956,6 @@ validate-npm-package-license@^3.0.1:
   dependencies:
     spdx-correct "~1.0.0"
     spdx-expression-parse "~1.0.0"
-
-vanilla-lazyload@^7.2.1:
-  version "7.2.1"
-  resolved "https://registry.yarnpkg.com/vanilla-lazyload/-/vanilla-lazyload-7.2.1.tgz#a38345d2024394b2520de4764daa19a606c5c9cb"
 
 vendors@^1.0.0:
   version "1.0.1"

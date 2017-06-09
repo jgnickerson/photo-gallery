@@ -1,5 +1,7 @@
 import Masonry from 'masonry-layout';
+import Isotope from 'isotope-layout';
 import imagesLoaded from 'imagesloaded';
+import 'lazysizes';
 import './index.css'
 
 let grid = document.createElement('div');
@@ -22,24 +24,41 @@ document.body.appendChild(grid);
 
 //let images = [];
 
-let urls = [
-  'https://c1.staticflickr.com/6/5661/22826806478_735a5b3709_o.jpg',
-  'https://c1.staticflickr.com/6/5792/30969987556_704d3f7bc2_o.jpg',
-  'https://c1.staticflickr.com/6/5749/30969987986_cf9b511db4_o.jpg',
-  'https://c1.staticflickr.com/3/2911/33435250581_3771783871_o.jpg',
-  'https://c1.staticflickr.com/6/5506/30969987906_805b11c0ca_o.jpg',
-  'https://c1.staticflickr.com/6/5521/22826806218_cff7015524_o.jpg',
-  'https://c1.staticflickr.com/6/5560/30969987836_406b4aab7e_o.jpg',
-  'https://c1.staticflickr.com/6/5821/22826805948_3042189999_o.jpg',
-  'https://c1.staticflickr.com/3/2911/33435250581_3771783871_o.jpg',
-  'https://c1.staticflickr.com/6/5563/30969987696_d85fd0e414_o.jpg',
-  'https://c1.staticflickr.com/3/2830/33407254622_2d9521fa3f_o.jpg',
-  'https://c1.staticflickr.com/4/3829/32720628284_148d94b5cb_o.jpg',
-  'https://c1.staticflickr.com/3/2911/33435250581_3771783871_o.jpg',
-  'https://c1.staticflickr.com/4/3678/33435244401_01aa5f1120_o.jpg',
-  'https://c1.staticflickr.com/6/5560/30969987836_406b4aab7e_o.jpg',
-  'https://c1.staticflickr.com/3/2905/32720602474_b7aee347e8_o.jpg'
-];
+// let urls = [
+//   'https://c1.staticflickr.com/6/5661/22826806478_735a5b3709_o.jpg',
+//   'https://c1.staticflickr.com/6/5792/30969987556_704d3f7bc2_o.jpg',
+//   'https://c1.staticflickr.com/6/5749/30969987986_cf9b511db4_o.jpg',
+//   'https://c1.staticflickr.com/3/2911/33435250581_3771783871_o.jpg',
+//   'https://c1.staticflickr.com/6/5506/30969987906_805b11c0ca_o.jpg',
+//   'https://c1.staticflickr.com/6/5521/22826806218_cff7015524_o.jpg',
+//   'https://c1.staticflickr.com/6/5560/30969987836_406b4aab7e_o.jpg',
+//   'https://c1.staticflickr.com/6/5821/22826805948_3042189999_o.jpg',
+//   'https://c1.staticflickr.com/3/2911/33435250581_3771783871_o.jpg',
+//   'https://c1.staticflickr.com/6/5563/30969987696_d85fd0e414_o.jpg',
+//   'https://c1.staticflickr.com/3/2830/33407254622_2d9521fa3f_o.jpg',
+//   'https://c1.staticflickr.com/4/3829/32720628284_148d94b5cb_o.jpg',
+//   'https://c1.staticflickr.com/3/2911/33435250581_3771783871_o.jpg',
+//   'https://c1.staticflickr.com/4/3678/33435244401_01aa5f1120_o.jpg',
+//   'https://c1.staticflickr.com/6/5560/30969987836_406b4aab7e_o.jpg',
+//   'https://c1.staticflickr.com/3/2905/32720602474_b7aee347e8_o.jpg'
+// ];
+
+let urls = [['https://c1.staticflickr.com/6/5661/22826806478_735a5b3709_o.jpg', 1000, 567],
+                  ['https://c1.staticflickr.com/6/5792/30969987556_704d3f7bc2_o.jpg', 1000,646],
+                  ['https://c1.staticflickr.com/6/5749/30969987986_cf9b511db4_o.jpg', 1000,604],
+                  ['https://c1.staticflickr.com/3/2911/33435250581_3771783871_o.jpg', 627,926],
+                  ['https://c1.staticflickr.com/6/5506/30969987906_805b11c0ca_o.jpg', 1000,604],
+                  ['https://c1.staticflickr.com/6/5521/22826806218_cff7015524_o.jpg', 1000,607],
+                  ['https://c1.staticflickr.com/6/5560/30969987836_406b4aab7e_o.jpg', 1000,672],
+                  ['https://c1.staticflickr.com/6/5821/22826805948_3042189999_o.jpg', 1000,667],
+                  ['https://c1.staticflickr.com/3/2911/33435250581_3771783871_o.jpg', 627,926],
+                  ['https://c1.staticflickr.com/6/5563/30969987696_d85fd0e414_o.jpg', 1000, 667],
+                  ['https://c1.staticflickr.com/3/2830/33407254622_2d9521fa3f_o.jpg', 4961, 3585],
+                  ['https://c1.staticflickr.com/4/3829/32720628284_148d94b5cb_o.jpg', 1186, 925],
+                  ['https://c1.staticflickr.com/3/2911/33435250581_3771783871_o.jpg', 627, 926],
+                  ['https://c1.staticflickr.com/4/3678/33435244401_01aa5f1120_o.jpg', 4811, 3360],
+                  ['https://c1.staticflickr.com/6/5560/30969987836_406b4aab7e_o.jpg', 1000,672],
+                  ['https://c1.staticflickr.com/3/2905/32720602474_b7aee347e8_o.jpg', 5472, 3543]];
 
 // let div = document.createElement('div');
 // div.className = 'grid-item';
@@ -54,17 +73,21 @@ let urls = [
 // images.push(div);
 
 //set up sizing div for masonry's responsive layout
-let sizerDiv = document.createElement('div');
-sizerDiv.className = 'grid-sizer';
-grid.appendChild(sizerDiv);
+// let sizerDiv = document.createElement('div');
+// sizerDiv.className = 'grid-sizer';
+// grid.appendChild(sizerDiv);
 
 urls.forEach(url => {
   let div = document.createElement('div');
-  div.className = 'grid-item-wrapper';
+  div.className = 'grid-item';
+  div.style['padding-bottom'] = url[2]/url[1]*100 + '%';
 
   let img = document.createElement('img');
-  img.className = 'grid-item';
-  img.src = url;
+  img.className = 'lazyload';
+  //img.src = url;
+  img.setAttribute('data-src', url[0]);
+  // console.log(url[2]/url[1]*100 + '%');
+  // img.style.height = url[2]/url[1]*100 + '%';
 
   // img.style.height = 'auto';
   // img.style.width = '400px'
@@ -102,16 +125,37 @@ urls.forEach(url => {
 // }
 //
 
-
-imagesLoaded(grid, ()=>{
-  let msnry = new Masonry(grid, {
-    itemSelector: '.grid-item',
-    columnWidth: '.grid-sizer',
-    percentPosition: true,
+let isotope = new Isotope(grid, {
+  itemSelector: '.grid-item',
+  masonry: {
     horizontalOrder: true,
-    gutter: 10,
-    transitionDuration: 0
-  });
-
-  msnry.layout();
+    gutter: 10
+  }
 });
+
+isotope.layout();
+
+
+// imagesLoaded(grid, ()=>{
+//   // let isotope = new Isotope(grid, {
+//   //   itemSelector: '.grid-item',
+//   //   masonry: {
+//   //     columnWidth: '.grid-sizer',
+//   //     percentPosition: true,
+//   //     horizontalOrder: true,
+//   //     gutter: 10
+//   //   }
+//   // });
+//   //
+//   // isotope.layout();
+//   // let msnry = new Masonry(grid, {
+//   //   itemSelector: '.grid-item',
+//   //   columnWidth: '.grid-sizer',
+//   //   percentPosition: true,
+//   //   horizontalOrder: true,
+//   //   gutter: 10,
+//   //   transitionDuration: 0
+//   // });
+//   //
+//   // msnry.layout();
+// });
