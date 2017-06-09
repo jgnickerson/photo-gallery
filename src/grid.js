@@ -43,6 +43,11 @@ class Grid {
     });
   }
 
+  layout() {
+    this.isotope.layout();
+    return this; //for easy method chaining
+  }
+
   _initGridItems() {
     this.imageObjects.forEach(object => {
       let gridItem = document.createElement('div');
