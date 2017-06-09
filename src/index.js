@@ -1,4 +1,6 @@
 import Grid from './grid.js';
+import 'lazysizes';
+import './index.css';
 
 let urls = [['https://c1.staticflickr.com/6/5661/22826806478_735a5b3709_o.jpg', 1000, 567],
                   ['https://c1.staticflickr.com/6/5792/30969987556_704d3f7bc2_o.jpg', 1000,646],
