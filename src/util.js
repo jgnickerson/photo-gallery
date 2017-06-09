@@ -1,4 +1,4 @@
-//copied from https://developer.mozilla.org/en-US/docs/Web/Events/resize
+//resize debounce copied from https://developer.mozilla.org/en-US/docs/Web/Events/resize
 var throttle = function(type, name, obj) {
   obj = obj || window;
   var running = false;

@@ -1,6 +1,17 @@
 import Grid from './grid.js';
+import firebase from 'firebase-app';
 import 'lazysizes';
 import './index.css';
+
+// const config = {
+//   apiKey: "AIzaSyDAaYXAQCGOvNrVYhhpkbSOOUW91b1m81I",
+//   authDomain: "photo-gallery-38650.firebaseapp.com",
+//   databaseURL: "https://photo-gallery-38650.firebaseio.com",
+//   projectId: "photo-gallery-38650",
+//   storageBucket: "photo-gallery-38650.appspot.com",
+//   messagingSenderId: "780654496614"
+// };
+// firebase.initializeApp(config);
 
 let urls = [['https://c1.staticflickr.com/6/5661/22826806478_735a5b3709_o.jpg', 1000, 567],
                   ['https://c1.staticflickr.com/6/5792/30969987556_704d3f7bc2_o.jpg', 1000,646],
