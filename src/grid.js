@@ -41,7 +41,7 @@ class Grid {
       this.state.imgPaddingDivisor = newPaddingDivisor;
       //recalculate the padding-bottom when we hit a breakpoint
       this.grid.childNodes.forEach((div, index) => {
-        div.style['padding-bottom'] = this.imageObjects[index][2]/this.imageObjects[index][1]*100/this.state.imgPaddingDivisor + '%';
+        div.style['padding-bottom'] = this.imageObjects[index].height/this.imageObjects[index].width*100/this.state.imgPaddingDivisor + '%';
       })
 
       this.isotope.layout();
@@ -51,14 +51,14 @@ class Grid {
   }
 
   _initGridItems() {
-    this.imageObjects.forEach(object => {
+    this.imageObjects.forEach(obj => {
       let gridItem = document.createElement('div');
       gridItem.className = 'grid-item';
-      gridItem.style['padding-bottom'] = object[2]/object[1]*100/this.state.imgPaddingDivisor + '%';
+      gridItem.style['padding-bottom'] = obj.height/obj.width*100/this.state.imgPaddingDivisor + '%';
 
       let img = document.createElement('img');
       img.className = 'lazyload';
-      img.setAttribute('data-src', object[0]);
+      img.setAttribute('data-src', obj.url);
 
       gridItem.appendChild(img);
       this.grid.appendChild(gridItem);
