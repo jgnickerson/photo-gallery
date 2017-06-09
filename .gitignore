@@ -5,3 +5,5 @@ dist/main.bundle.js
 .DS_Store
 
 .tern-project
+
+firebase-debug.log

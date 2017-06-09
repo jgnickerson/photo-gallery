@@ -1,17 +1,18 @@
+var firebase = require('firebase/app'); //not working with import for some reason
+require('firebase/storage');
 import Grid from './grid.js';
-import firebase from 'firebase-app';
 import 'lazysizes';
 import './index.css';
 
-// const config = {
-//   apiKey: "AIzaSyDAaYXAQCGOvNrVYhhpkbSOOUW91b1m81I",
-//   authDomain: "photo-gallery-38650.firebaseapp.com",
-//   databaseURL: "https://photo-gallery-38650.firebaseio.com",
-//   projectId: "photo-gallery-38650",
-//   storageBucket: "photo-gallery-38650.appspot.com",
-//   messagingSenderId: "780654496614"
-// };
-// firebase.initializeApp(config);
+const config = {
+  apiKey: "AIzaSyDAaYXAQCGOvNrVYhhpkbSOOUW91b1m81I",
+  authDomain: "photo-gallery-38650.firebaseapp.com",
+  databaseURL: "https://photo-gallery-38650.firebaseio.com",
+  projectId: "photo-gallery-38650",
+  storageBucket: "photo-gallery-38650.appspot.com",
+  messagingSenderId: "780654496614"
+};
+firebase.initializeApp(config);
 
 let urls = [['https://c1.staticflickr.com/6/5661/22826806478_735a5b3709_o.jpg', 1000, 567],
                   ['https://c1.staticflickr.com/6/5792/30969987556_704d3f7bc2_o.jpg', 1000,646],
@@ -30,13 +31,36 @@ let urls = [['https://c1.staticflickr.com/6/5661/22826806478_735a5b3709_o.jpg', 
                   ['https://c1.staticflickr.com/6/5560/30969987836_406b4aab7e_o.jpg', 1000,672],
                   ['https://c1.staticflickr.com/3/2905/32720602474_b7aee347e8_o.jpg', 5472, 3543]];
 
-let grid = new Grid(document.body, urls);
+let storage = firebase.storage();
+let ref = storage.ref();
+let images = ref.child('images');
+let image = images.child('IMG_0015.jpg');
+let promise = new Promise((resolve, reject) => {
+  console.log('hello');
+  image.getDownloadURL()
+  .then(url => {
+    console.log(url);
+    function getMeta(url){
+      var img = new Image();
+      img.addEventListener("load", function(){
+        console.log(url);
+        resolve([url, this.naturalWidth, this.naturalHeight]);
+      });
+      img.src = url;
+    }
+    getMeta(url);
+  })
+})
 
-window.addEventListener("optimizedResize", () => {
-  grid.fixPadding();
+promise.then(obj=> {
+  var grid = new Grid(document.body, [obj, ...urls]);
 
-  //hack to get around breakpoint layout issue
-  setTimeout(()=>{
-    grid.layout();
-  }, 500);
+  window.addEventListener("optimizedResize", () => {
+    grid.fixPadding();
+
+    //hack to get around breakpoint layout issue
+    setTimeout(()=>{
+      grid.layout();
+    }, 500);
+  });
 });
