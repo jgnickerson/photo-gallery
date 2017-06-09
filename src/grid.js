@@ -18,9 +18,10 @@ class Grid {
 
     this.isotope = new Isotope(this.grid, {
       itemSelector: '.grid-item',
+      transitionDuration: 0,
       masonry: {
         horizontalOrder: true,
-        gutter: 10
+        gutter: 10,
       }
     });
 

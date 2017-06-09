@@ -34,33 +34,103 @@ let urls = [['https://c1.staticflickr.com/6/5661/22826806478_735a5b3709_o.jpg', 
 let storage = firebase.storage();
 let ref = storage.ref();
 let images = ref.child('images');
-let image = images.child('IMG_0015.jpg');
-let promise = new Promise((resolve, reject) => {
-  console.log('hello');
-  image.getDownloadURL()
-  .then(url => {
-    console.log(url);
-    function getMeta(url){
-      var img = new Image();
-      img.addEventListener("load", function(){
-        console.log(url);
-        resolve([url, this.naturalWidth, this.naturalHeight]);
-      });
-      img.src = url;
-    }
-    getMeta(url);
-  })
+let metadata = ref.child('image-metadata.json');
+
+metadata.getDownloadURL().then(url =>{
+  fetch(url)
+  .then(r => r.json())
+  .then(data => console.log(data))
 })
+// let image = images.child();
 
-promise.then(obj=> {
-  var grid = new Grid(document.body, [obj, ...urls]);
+// function loadImage(src) {
+//   return new Promise((resolve, reject) => {
+//     let image = new Image();
+//     image.src = src;
+//     image.onload = () => resolve(image);
+//     image.onerror = (e) => reject(e);
+//   });
+// }
+//
+// let imageObjects = [];
+//
+// let p = new Promise((resolve, reject) => {
+//   let urlPromises = [];
+//   for (let i = 1; i < 5; i++) {
+//     let p = new Promise((resolve, reject) => {
+//       let imgPath = 'IMG_00' + i + '.jpg';
+//       images.child(imgPath).getDownloadURL().then(url => {
+//         console.log(url);
+//         imageObjects.push({ url });
+//         resolve();
+//       });
+//     })
+//     urlPromises.push(p);
+//   }
+//
+//   Promise.all(urlPromises).then(()=>{
+//     resolve();
+//   })
+// })
+//
+//
+// p.then(()=>{
+//   let promises = [];
+//   imageObjects.forEach(obj => {
+//     promises.push(getMeta(obj.url));
+//   })
+//
+//   return Promise.all(promises);
+// })
+// .then(results => {
+//   imageObjects.forEach((obj, index) => {
+//     obj.width = results[index][0];
+//     obj.height = results[index][1];
+//   });
+//
+//   let json = JSON.stringify(imageObjects);
+//   console.log(json);
+//   metadata.putString(json).then((snapshot) => {console.log(snapshot)});
+// })
+//
+// function getMeta(url){
+//   return new Promise((resolve, reject) => {
+//     var img = new Image();
+//     img.onload = function() {
+//       resolve([this.naturalWidth, this.naturalHeight]);
+//     };
+//     img.onerror = (e) => reject(e);
+//     img.src = url;
+//   })
+// }
 
-  window.addEventListener("optimizedResize", () => {
-    grid.fixPadding();
 
-    //hack to get around breakpoint layout issue
-    setTimeout(()=>{
-      grid.layout();
-    }, 500);
-  });
-});
+
+
+
+// let promise = new Promise((resolve, reject) => {
+//   image.getDownloadURL()
+//   .then(url => {
+//     function getMeta(url){
+//       var img = new Image();
+//       img.addEventListener("load", function(){
+//         resolve([url, this.naturalWidth, this.naturalHeight]);
+//       });
+//       img.src = url;
+//     }
+//     getMeta(url);
+//   })
+// })
+//
+// promise.then(obj=> {
+//   var grid = new Grid(document.body, [obj, ...urls]);
+//
+//   window.addEventListener("optimizedResize", () => {
+//     grid.fixPadding();
+//
+//     //hack to get around breakpoint layout issue
+//     setTimeout(()=>{
+//       grid.layout();
+//     }, 500);
+//   });
+// });
