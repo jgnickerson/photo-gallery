@@ -1,8 +1,8 @@
 import Masonry from 'masonry-layout';
 import Isotope from 'isotope-layout';
-import imagesLoaded from 'imagesloaded';
+import './util.js';
 import 'lazysizes';
-import './index.css'
+import './index.css';
 
 let grid = document.createElement('div');
 grid.className = 'grid';
@@ -25,19 +25,19 @@ let urls = [['https://c1.staticflickr.com/6/5661/22826806478_735a5b3709_o.jpg', 
                   ['https://c1.staticflickr.com/6/5560/30969987836_406b4aab7e_o.jpg', 1000,672],
                   ['https://c1.staticflickr.com/3/2905/32720602474_b7aee347e8_o.jpg', 5472, 3543]];
 
-let ratioDivisor;
+let imgPaddingDivisor;
 if (window.matchMedia("only screen and (min-width: 70em)").matches) {
-  ratioDivisor = 3;
+  imgPaddingDivisor = 3;
 } else if (window.matchMedia("only screen and (min-width: 50em) and (max-width: 70em)").matches) {
-  ratioDivisor = 2;
+  imgPaddingDivisor = 2;
 } else {
-  ratioDivisor = 1;
+  imgPaddingDivisor = 1;
 }
 
 urls.forEach(url => {
   let div = document.createElement('div');
   div.className = 'grid-item';
-  div.style['padding-bottom'] = url[2]/url[1]*100/ratioDivisor + '%';
+  div.style['padding-bottom'] = url[2]/url[1]*100/imgPaddingDivisor + '%';
 
   let img = document.createElement('img');
   img.className = 'lazyload';
@@ -56,3 +56,26 @@ let isotope = new Isotope(grid, {
 });
 
 isotope.layout();
+
+//change grid-item div padding-bottom to align with new column number at window resize breakpoints
+window.addEventListener("optimizedResize", function() {
+  let newPaddingDivisor;
+
+  if (window.matchMedia("only screen and (min-width: 70em)").matches) {
+    newPaddingDivisor = 3;
+  } else if (window.matchMedia("only screen and (min-width: 50em) and (max-width: 70em)").matches) {
+    newPaddingDivisor = 2;
+  } else {
+    newPaddingDivisor = 1;
+  }
+
+  if (newPaddingDivisor !== imgPaddingDivisor) {
+    imgPaddingDivisor = newPaddingDivisor;
+    //recalculate the padding-bottom when we hit a breakpoint
+    grid.childNodes.forEach((div, index) => {
+      div.style['padding-bottom'] = urls[index][2]/urls[index][1]*100/imgPaddingDivisor + '%';
+    })
+
+    isotope.layout();
+  }
+});

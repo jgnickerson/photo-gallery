@@ -6,7 +6,6 @@
   "author": "Gordon Nickerson",
   "license": "MIT",
   "dependencies": {
-    "imagesloaded": "^4.1.2",
     "isotope-layout": "^3.0.4",
     "lazysizes": "^4.0.0-rc1",
     "masonry-layout": "^4.2.0"

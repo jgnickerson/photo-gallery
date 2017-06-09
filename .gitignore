@@ -3,3 +3,5 @@ node_modules
 dist/main.bundle.js
 
 .DS_Store
+
+.tern-project

@@ -1201,7 +1201,7 @@ esutils@^2.0.2:
   version "2.0.2"
   resolved "https://registry.yarnpkg.com/esutils/-/esutils-2.0.2.tgz#0abf4f1caa5bcb1f7a9d8acc6dea4faaa04bac9b"
 
-ev-emitter@^1.0.0, ev-emitter@~1.0.0:
+ev-emitter@^1.0.0:
   version "1.0.3"
   resolved "https://registry.yarnpkg.com/ev-emitter/-/ev-emitter-1.0.3.tgz#ee5ef74b6ed28d911b32ddcbfc97867f580937bc"
 
@@ -1501,12 +1501,6 @@ icss-utils@^2.1.0:
 ieee754@^1.1.4:
   version "1.1.8"
   resolved "https://registry.yarnpkg.com/ieee754/-/ieee754-1.1.8.tgz#be33d40ac10ef1926701f6f08a2d86fbfd1ad3e4"
-
-imagesloaded@^4.1.2:
-  version "4.1.2"
-  resolved "https://registry.yarnpkg.com/imagesloaded/-/imagesloaded-4.1.2.tgz#9d1e094112ad3fe6445289c470d975627819df0d"
-  dependencies:
-    ev-emitter "~1.0.0"
 
 indexes-of@^1.0.1:
   version "1.0.1"
