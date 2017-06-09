@@ -25,27 +25,28 @@ class Grid {
     });
 
     this.isotope.layout();
-
-    //NOT SURE IF THIS SHOULD BE IN THE CLASS OR WHERE WE INSTANTIATE...
-    //change grid-item div padding-bottom to align with new column number at window resize breakpoints
-    window.addEventListener("optimizedResize", ()=> {
-      let newPaddingDivisor = this._getPaddingDivisor();
-
-      if (newPaddingDivisor !== this.state.imgPaddingDivisor) {
-        this.state.imgPaddingDivisor = newPaddingDivisor;
-        //recalculate the padding-bottom when we hit a breakpoint
-        this.grid.childNodes.forEach((div, index) => {
-          div.style['padding-bottom'] = this.imageObjects[index][2]/this.imageObjects[index][1]*100/this.state.imgPaddingDivisor + '%';
-        })
-
-        this.isotope.layout();
-      }
-    });
   }
 
   layout() {
     this.isotope.layout();
     return this; //for easy method chaining
+  }
+
+  //change grid-item div padding-bottom to align with new column number at window resize breakpoints
+  fixPadding() {
+    let newPaddingDivisor = this._getPaddingDivisor();
+
+    if (newPaddingDivisor !== this.state.imgPaddingDivisor) {
+      this.state.imgPaddingDivisor = newPaddingDivisor;
+      //recalculate the padding-bottom when we hit a breakpoint
+      this.grid.childNodes.forEach((div, index) => {
+        div.style['padding-bottom'] = this.imageObjects[index][2]/this.imageObjects[index][1]*100/this.state.imgPaddingDivisor + '%';
+      })
+
+      this.isotope.layout();
+    }
+
+    return this;
   }
 
   _initGridItems() {

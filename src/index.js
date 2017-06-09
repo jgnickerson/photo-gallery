@@ -21,8 +21,10 @@ let urls = [['https://c1.staticflickr.com/6/5661/22826806478_735a5b3709_o.jpg', 
 
 let grid = new Grid(document.body, urls);
 
-//hack to get around breakpoint layout issue
 window.addEventListener("optimizedResize", () => {
+  grid.fixPadding();
+
+  //hack to get around breakpoint layout issue
   setTimeout(()=>{
     grid.layout();
   }, 500);
