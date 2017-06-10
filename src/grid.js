@@ -52,11 +52,11 @@ class Grid {
 
   _initGridItems() {
     this.imageObjects.forEach(obj => {
-      let gridItem = document.createElement('div');
+      const gridItem = document.createElement('div');
       gridItem.className = 'grid-item';
       gridItem.style['padding-bottom'] = obj.height/obj.width*100/this.state.imgPaddingDivisor + '%';
 
-      let img = document.createElement('img');
+      const img = document.createElement('img');
       img.className = 'lazyload';
       img.setAttribute('data-src', obj.url);
 

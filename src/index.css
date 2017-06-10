@@ -1,3 +1,9 @@
+/*
+
+    Grid styles
+
+*/
+
 .grid {
   position: relative;
   width: 100%;
@@ -40,4 +46,16 @@
 .lazyloading {
   background: #f7f7f7 url(http://afarkas.github.io/lazysizes/assets/imgs/loader.gif) no-repeat center;
   min-height: 60px;
+}
+
+
+/*
+
+    Upload styles
+
+*/
+
+.img-preview {
+    width: 200px;
+    height: auto;
 }
