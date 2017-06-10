@@ -13,7 +13,7 @@ uploadButton.onclick = () => {
   if (img) {
     storage.ref().child('images/' + img.name).put(img)
     .then(snapshot => {
-      const newImgMetadata = {url: snapshot.downloadURL, width: imgPreview.naturalWidth, height: imgPreview.naturalHeight};
+      const newImgMetadata = {filename: img.name, url: snapshot.downloadURL, width: imgPreview.naturalWidth, height: imgPreview.naturalHeight};
       metadataPromise.then(metadataSnapshot => {
         const newMetadataArray = [];
         if (metadataSnapshot.val()) {
@@ -23,8 +23,6 @@ uploadButton.onclick = () => {
         db.ref('imageMetadata').set(newMetadataArray);
       })
     })
-
-    console.log(imgPreview.naturalWidth, imgPreview.naturalHeight);
   } else {
     console.log("please select a file");
   }

@@ -1,6 +1,7 @@
 import {db, storage} from './db.js';
 import Grid from './grid.js';
 import './upload.js';
+import './reorder.js';
 import 'lazysizes';
 import './index.css';
 

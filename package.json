@@ -10,7 +10,8 @@
     "firebase-app": "^0.0.1",
     "isotope-layout": "^3.0.4",
     "lazysizes": "^4.0.0-rc1",
-    "masonry-layout": "^4.2.0"
+    "masonry-layout": "^4.2.0",
+    "sortablejs": "^1.6.0"
   },
   "devDependencies": {
     "babel-core": "^6.24.1",

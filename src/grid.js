@@ -14,7 +14,9 @@ class Grid {
     this.grid.className = 'grid';
     parentNode.appendChild(this.grid);
 
-    this._initGridItems();
+    if (this.imageObjects) {
+      this._initGridItems();
+    }
 
     this.isotope = new Isotope(this.grid, {
       itemSelector: '.grid-item',
