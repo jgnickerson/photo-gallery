@@ -8,6 +8,7 @@ imgPreview.className = "img-preview";
 
 const uploadButton = document.createElement('button');
 uploadButton.textContent = "Upload";
+uploadButton.className = "button";
 uploadButton.onclick = () => {
   const img = imgInput.files[0];
   if (img) {
@@ -42,4 +43,6 @@ imgInput.onchange = () => {
   }
 }
 
-document.body.append(imgInput, imgPreview, uploadButton);
+document.body.appendChild(imgInput);
+document.body.appendChild(imgPreview);
+document.body.appendChild(uploadButton);

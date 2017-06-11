@@ -2,7 +2,7 @@ import { metadataPromise, db } from './db.js';
 import Sortable from 'sortablejs';
 
 const sortableContainer = document.createElement('div')
-document.body.append(sortableContainer);
+document.body.appendChild(sortableContainer);
 
 const updateButton = document.createElement('button');
 updateButton.textContent = "Update Photo Order"
@@ -13,7 +13,7 @@ updateButton.onclick = () => {
   });
   db.ref('imageMetadata').set(newMetadataArray);
 }
-document.body.append(updateButton);
+document.body.appendChild(updateButton);
 
 metadataPromise.then(metadataSnapshot =>{
   const metadata = metadataSnapshot.val();
@@ -23,11 +23,11 @@ metadataPromise.then(metadataSnapshot =>{
     const li = document.createElement('li');
     li.setAttribute("data", JSON.stringify(obj));
     li.textContent = obj.filename;
-    ul.append(li);
+    ul.appendChild(li);
   });
 
   Sortable.create(ul, {
     animation: 150
   });
-  sortableContainer.append(ul);
+  sortableContainer.appendChild(ul);
 });
