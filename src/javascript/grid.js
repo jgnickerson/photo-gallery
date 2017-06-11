@@ -62,7 +62,29 @@ class Grid {
       img.className = 'lazyload';
       img.setAttribute('data-src', obj.url);
 
+      const modal = document.createElement('div');
+      modal.className = 'modal animated fadeIn';
+      const modalImg = document.createElement('img');
+      modalImg.className = 'modal-content';
+      const close = document.createElement('span');
+      close.className = 'close';
+      close.innerHTML = "&times";
+      close.onclick = () => modal.style.display = 'none';
+      document.addEventListener("keydown", (e) => {
+        if (e.keyCode === 27) {
+          modal.style.display = 'none';
+        }
+      });
+      modal.appendChild(modalImg);
+      modal.appendChild(close);
+
+      gridItem.onclick = () => {
+        modal.style.display = "block";
+        modalImg.src = obj.url;
+      }
+
       gridItem.appendChild(img);
+      document.body.appendChild(modal);
       this.grid.appendChild(gridItem);
     });
   }
