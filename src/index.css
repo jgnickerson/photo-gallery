@@ -1,6 +1,5 @@
 /*
-  Top Naviagation Styles
-
+  Nav Styles
 */
 
 .topnav {
@@ -32,14 +31,19 @@
 
 
 /*
-
     Grid styles
-
 */
 
 .grid {
-  position: relative;
-  width: 100%;
+  opacity: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.grid.visible {
+  opacity: 1;
+  z-index: 1;
+  pointer-events: auto;
 }
 
 .grid-item {
@@ -71,6 +75,7 @@
   opacity: 0.9;
   transform: scale(1.005);
   box-shadow: 0 20px 50px -15px rgba(0,0,0,0.35);
+  cursor: pointer;
 }
 
 .grid-item img {
@@ -90,10 +95,28 @@
 
 
 /*
-
     Upload styles
-
 */
+
+.admin {
+  position: absolute;
+  top: 0;
+}
+
+.admin #upload,
+.admin #reorder {
+  opacity: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.admin.visible #upload,
+.admin.visible #reorder {
+  opacity: 1;
+  z-index: 1;
+  pointer-events: auto;
+}
+
 
 .img-preview {
     width: 200px;
@@ -142,3 +165,17 @@
     text-decoration: none;
     cursor: pointer;
 }
+
+/*
+
+  Page styles
+
+*/
+
+/*.hidden {
+ visibility: hidden;
+}
+
+.visible {
+  visibility: visible;
+}*/
