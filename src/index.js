@@ -1,27 +1,24 @@
-import {db, storage} from './javascript/db.js';
+import DB from './javascript/db.js';
 import Grid from './javascript/grid.js';
-import './javascript/upload.js';
-import './javascript/reorder.js';
+//import './javascript/upload.js';
+//import './javascript/reorder.js';
 import 'lazysizes';
 import 'animate.css';
+import 'dropzone';
+import '../node_modules/dropzone/dist/min/dropzone.min.css';
+import '../node_modules/dropzone/dist/min/basic.min.css';
 import move from 'move-js';
 import './index.css';
-
-const storageRef = storage.ref();
-const images = storageRef.child('images');
 
 window.addEventListener("hashchange", ()=>{
   render(decodeURI(window.location.hash));
 });
 
-//fetches metadata and initializes grid
-db.ref('imageMetadata').once("value").then(result=> {
-  var grid = new Grid("grid", result.val());
+DB.getImageMetadata().then(metadata => {
+  const grid = new Grid("grid", metadata);
 
   window.dispatchEvent(new HashChangeEvent('hashchange'));
 });
-
-
 
 function render(url) {
   const keyword = url.split('/')[0];

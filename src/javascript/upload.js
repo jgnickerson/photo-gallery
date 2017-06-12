@@ -44,6 +44,7 @@ imgInput.onchange = () => {
 }
 
 const container = document.getElementById("upload");
-container.appendChild(imgInput);
-container.appendChild(imgPreview);
-container.appendChild(uploadButton);
+
+// container.appendChild(imgInput);
+// container.appendChild(imgPreview);
+// container.appendChild(uploadButton);

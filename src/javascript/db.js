@@ -2,24 +2,47 @@ var firebase = require('firebase/app'); //not working with import for some reaso
 require('firebase/storage');
 require('firebase/database');
 
-const config = {
-  apiKey: "AIzaSyDAaYXAQCGOvNrVYhhpkbSOOUW91b1m81I",
-  authDomain: "photo-gallery-38650.firebaseapp.com",
-  databaseURL: "https://photo-gallery-38650.firebaseio.com",
-  projectId: "photo-gallery-38650",
-  storageBucket: "photo-gallery-38650.appspot.com",
-  messagingSenderId: "780654496614"
-};
+class DB {
+  constructor() {
+    const config = {
+      apiKey: "AIzaSyDAaYXAQCGOvNrVYhhpkbSOOUW91b1m81I",
+      //authDomain: "photo-gallery-38650.firebaseapp.com",
+      databaseURL: "https://photo-gallery-38650.firebaseio.com",
+      projectId: "photo-gallery-38650",
+      storageBucket: "photo-gallery-38650.appspot.com",
+      //messagingSenderId: "780654496614"
+    };
 
-firebase.initializeApp(config);
+    firebase.initializeApp(config);
 
-let storage = firebase.storage();
-let storageRef = storage.ref();
-let images = storageRef.child('images');
-let metadata = storageRef.child('image-metadata.json');
+    this._db = firebase.database();
+    this._storage = firebase.storage();
+  }
 
-let db = firebase.database();
+  getImageMetadata() {
+    return this._db.ref('imageMetadata').once('value')
+      .then(snapshot => snapshot.exists() ? snapshot.val() : [])
+      .catch(this._handleError);
+  }
 
-let metadataPromise = db.ref('imageMetadata').once("value");
+  putImage(file, width, height) {
+    return this._storage.ref().child('images/' + file.name).put(file)
+      .then(snapshot => this._putImageMetadata(file.name, snapshot.downloadURL, width, height))
+      .catch(this._handleError);
+  }
 
-export {db, storage, metadataPromise};
+  _putImageMetadata(filename, url, width, height) {
+    const newImgMetadata = {filename, url, width, height};
+    return this.getImageMetadata()
+      .then(metadata => db.ref('imageMetadata').set([...metadata, newImgMetadata]))
+      .catch(this._handleError);
+  }
+
+  //TODO flesh this out
+  //following: https://hackernoon.com/promises-and-error-handling-4a11af37cb0e
+  _handleError(firebaseError) {
+    throw new Error("Firebase error: " + firebaseError.message);
+  }
+}
+
+export default (new DB);
