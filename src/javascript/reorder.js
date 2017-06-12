@@ -1,8 +1,7 @@
 import { metadataPromise, db } from './db.js';
 import Sortable from 'sortablejs';
 
-const sortableContainer = document.createElement('div')
-document.body.appendChild(sortableContainer);
+const sortableContainer = document.getElementById('reorder');
 
 const updateButton = document.createElement('button');
 updateButton.textContent = "Update Photo Order"
@@ -13,7 +12,7 @@ updateButton.onclick = () => {
   });
   db.ref('imageMetadata').set(newMetadataArray);
 }
-document.body.appendChild(updateButton);
+sortableContainer.appendChild(updateButton);
 
 metadataPromise.then(metadataSnapshot =>{
   const metadata = metadataSnapshot.val();
