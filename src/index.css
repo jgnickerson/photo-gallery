@@ -29,6 +29,13 @@
   top: 3.5em;
 }
 
+.nav-line {
+  position: absolute;
+  border-bottom: thin solid white;
+  width: 55px;
+  z-index: 1;
+}
+
 
 /*
     Grid styles

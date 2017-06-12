@@ -12,6 +12,7 @@
     "isotope-layout": "^3.0.4",
     "lazysizes": "^4.0.0-rc1",
     "masonry-layout": "^4.2.0",
+    "move-js": "^0.5.0",
     "sortablejs": "^1.6.0"
   },
   "devDependencies": {

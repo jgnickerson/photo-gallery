@@ -20,6 +20,13 @@ acorn@^5.0.0:
   version "5.0.3"
   resolved "https://registry.yarnpkg.com/acorn/-/acorn-5.0.3.tgz#c460df08491463f028ccb82eab3730bf01087b3d"
 
+after-transition@0.0.4:
+  version "0.0.4"
+  resolved "https://registry.yarnpkg.com/after-transition/-/after-transition-0.0.4.tgz#1653560507893d820e50323ddbbaaefd2ae17555"
+  dependencies:
+    css-emitter-component "~0.1.1"
+    has-transitions "~0.3.0"
+
 ajv-keywords@^1.1.1:
   version "1.5.1"
   resolved "https://registry.yarnpkg.com/ajv-keywords/-/ajv-keywords-1.5.1.tgz#314dd0a4b3368fad3dfcdc54ede6171b886daf3c"
@@ -932,6 +939,14 @@ commondir@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/commondir/-/commondir-1.0.1.tgz#ddd800da0c66127393cca5950ea968a3aaf1253b"
 
+component-emitter@^1.2.0:
+  version "1.2.1"
+  resolved "https://registry.yarnpkg.com/component-emitter/-/component-emitter-1.2.1.tgz#137918d6d78283f7df7a6b7c5a63e140e69425e6"
+
+component-query@0.0.3:
+  version "0.0.3"
+  resolved "https://registry.yarnpkg.com/component-query/-/component-query-0.0.3.tgz#07f49dab7071fa9606725df53e607f468acdaacf"
+
 concat-map@0.0.1:
   version "0.0.1"
   resolved "https://registry.yarnpkg.com/concat-map/-/concat-map-0.0.1.tgz#d8a96bd77fd68df7793a73036a3ba0d5405d477b"
@@ -1013,6 +1028,16 @@ crypto-browserify@^3.11.0:
 css-color-names@0.0.4:
   version "0.0.4"
   resolved "https://registry.yarnpkg.com/css-color-names/-/css-color-names-0.0.4.tgz#808adc2e79cf84738069b646cb20ec27beb629e0"
+
+css-ease@0.0.1:
+  version "0.0.1"
+  resolved "https://registry.yarnpkg.com/css-ease/-/css-ease-0.0.1.tgz#537679b67c9fc7c52968825b6fdd21f7492ca86c"
+
+css-emitter-component@~0.1.1:
+  version "0.1.1"
+  resolved "https://registry.yarnpkg.com/css-emitter-component/-/css-emitter-component-0.1.1.tgz#fb5e4c4dab3cd62c930acac837b6e34d87ab2a8e"
+  dependencies:
+    event-component "~0.1.0"
 
 css-loader@^0.28.4:
   version "0.28.4"
@@ -1227,6 +1252,10 @@ esutils@^2.0.2:
 ev-emitter@^1.0.0:
   version "1.0.3"
   resolved "https://registry.yarnpkg.com/ev-emitter/-/ev-emitter-1.0.3.tgz#ee5ef74b6ed28d911b32ddcbfc97867f580937bc"
+
+event-component@~0.1.0:
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/event-component/-/event-component-0.1.0.tgz#80455579d134ab27e3bb80bb2869bf96a76e9e68"
 
 events@^1.0.0:
   version "1.1.1"
@@ -1460,6 +1489,16 @@ has-ansi@^2.0.0:
 has-flag@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/has-flag/-/has-flag-1.0.0.tgz#9d9e793165ce017a00f00418c43f942a7b1d11fa"
+
+has-transitions@~0.3.0:
+  version "0.3.0"
+  resolved "https://registry.yarnpkg.com/has-transitions/-/has-transitions-0.3.0.tgz#066437c589613a8d7ba0aaa3cbd408eccb408f10"
+
+has-translate3d@0.0.3:
+  version "0.0.3"
+  resolved "https://registry.yarnpkg.com/has-translate3d/-/has-translate3d-0.0.3.tgz#ee0157ad5b4ca8a1a33514a9e7ef45415a132103"
+  dependencies:
+    transform-property "0.0.1"
 
 has-unicode@^2.0.0:
   version "2.0.1"
@@ -1979,6 +2018,16 @@ minimist@^1.2.0:
 moment@2.x.x:
   version "2.18.1"
   resolved "https://registry.yarnpkg.com/moment/-/moment-2.18.1.tgz#c36193dd3ce1c2eed2adb7c802dbbc77a81b1c0f"
+
+move-js@^0.5.0:
+  version "0.5.0"
+  resolved "https://registry.yarnpkg.com/move-js/-/move-js-0.5.0.tgz#19f42dee61fe6ae9252436c27796c122614c3d2c"
+  dependencies:
+    after-transition "0.0.4"
+    component-emitter "^1.2.0"
+    component-query "0.0.3"
+    css-ease "0.0.1"
+    has-translate3d "0.0.3"
 
 ms@2.0.0, ms@^2.0.0:
   version "2.0.0"
@@ -2978,6 +3027,10 @@ tough-cookie@~2.3.0:
   resolved "https://registry.yarnpkg.com/tough-cookie/-/tough-cookie-2.3.2.tgz#f081f76e4c85720e6c37a5faced737150d84072a"
   dependencies:
     punycode "^1.4.1"
+
+transform-property@0.0.1:
+  version "0.0.1"
+  resolved "https://registry.yarnpkg.com/transform-property/-/transform-property-0.0.1.tgz#4863662f9d5e5bb8f0c00648eff08beb14fd65f2"
 
 trim-right@^1.0.1:
   version "1.0.1"

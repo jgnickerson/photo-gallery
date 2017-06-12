@@ -4,6 +4,7 @@ import './javascript/upload.js';
 import './javascript/reorder.js';
 import 'lazysizes';
 import 'animate.css';
+import move from 'move-js';
 import './index.css';
 
 const storageRef = storage.ref();
@@ -29,6 +30,9 @@ function render(url) {
   if (visible)
     visible.classList.remove("visible");
 
+
+  navAnimate(keyword);
+
   switch (keyword) {
     case "#admin" :
       document.querySelector(".page.admin").classList.add("visible");
@@ -37,4 +41,18 @@ function render(url) {
     default:
       document.querySelector(".page.grid").classList.add("visible");
   }
+}
+
+function navAnimate(keyword) {
+  let navItem;
+  switch (keyword) {
+    case "#admin":
+      navItem = document.getElementById("admin-nav").getBoundingClientRect();
+      break;
+    default:
+      navItem = document.getElementById("home-nav").getBoundingClientRect();
+  }
+
+
+  move('.nav-line').translate(navItem.left+2, navItem.bottom - 17).end();
 }
