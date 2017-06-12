@@ -3,16 +3,12 @@ import Isotope from 'isotope-layout';
 import './util.js';
 
 class Grid {
-  constructor(parentNode, imageObjects) {
-    this.container = parentNode;
+  constructor(gridId, imageObjects) {
+    this.grid = document.getElementById(gridId);
     this.imageObjects = imageObjects;
     this.state = {
       imgPaddingDivisor: this._getPaddingDivisor()
     }
-
-    this.grid = document.createElement('div');
-    this.grid.className = 'grid';
-    parentNode.appendChild(this.grid);
 
     if (this.imageObjects) {
       this._initGridItems();
@@ -28,6 +24,15 @@ class Grid {
     });
 
     this.isotope.layout();
+
+    window.addEventListener("optimizedResize", () => {
+      this.fixPadding();
+
+      //hack to get around breakpoint layout issue
+      setTimeout(()=>{
+        this.layout();
+      }, 500);
+    });
   }
 
   layout() {
