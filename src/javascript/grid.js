@@ -55,7 +55,11 @@ class Grid {
   _initGridItems() {
     this.imageObjects.forEach(obj => {
       const gridItem = document.createElement('div');
+      // if (obj.width < 2*obj.height) {
       gridItem.className = 'grid-item';
+      // } else {
+      //   gridItem.className = 'grid-item extra-wide';
+      // }
       gridItem.style['padding-bottom'] = obj.height/obj.width*100/this.state.imgPaddingDivisor + '%';
 
       const img = document.createElement('img');

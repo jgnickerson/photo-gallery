@@ -20,11 +20,17 @@
   .grid-item {
     width: calc((100% - 20px)/3);
   }
+  .grid-item.extra-wide {
+    width: calc(2*(100% - 20px)/3)
+  }
 }
 
 @media only screen and (min-width: 50em) and (max-width: 70em) {
   .grid-item {
     width: calc((100% - 10px)/2);
+  }
+  .grid-item.extra-wide {
+    width: 100%
   }
 }
 
