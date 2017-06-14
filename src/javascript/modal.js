@@ -17,6 +17,7 @@ class Modal {
     document.body.appendChild(this._container);
 
     this._close.addEventListener('click', () => this._hideModal());
+    //short-circuit to make the callback a one-liner.
     window.addEventListener('keydown', (e) => e.keyCode === 27 && this._hideModal());
   }
 
@@ -31,4 +32,4 @@ class Modal {
   }
 }
 
-export default(new Modal)
+export default (new Modal);

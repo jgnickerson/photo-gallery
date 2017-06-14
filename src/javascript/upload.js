@@ -24,14 +24,16 @@ imgInput.addEventListener("change", () => {
   }
 });
 
-uploadButton.addEventListener("click", () => {
+uploadButton.addEventListener("click", (e) => {
+  e.preventDefault(); //necessary?
   const img = imgInput.files[0];
   DB.isFilenameDuplicate(img.newName).then(isDuplicate => {
     if (isDuplicate) {
       alert("Duplicate Filename. Please Rename");
     } else {
+      imgPreview.classList.add('loading');
       DB.putImage(img, img.newName).then(()=>{
-        alert("success");
+        imgPreview.classList.remove('loading');
       });
     }
   });

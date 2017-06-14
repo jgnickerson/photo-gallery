@@ -32,7 +32,7 @@
 .page-content {
   position: absolute;
   width: calc(100% - 20px);
-  height: 100%;
+  height: calc(100% - 3.5em);
   top: 3.5em;
 }
 
@@ -130,9 +130,29 @@
   align-items: center;
 }
 
+.img-preview-container {
+  position: relative;
+}
+
 .img-upload-preview {
-    width: 200px;
-    height: auto;
+  opacity: 1;
+  width: 200px;
+  height: auto;
+}
+
+.loading-overlay {
+  opacity: 0;
+  z-index: 2;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #f7f7f7 url(http://afarkas.github.io/lazysizes/assets/imgs/loader.gif) no-repeat center;
+}
+
+.img-upload-preview.loading + .loading-overlay {
+  opacity: 0.5;
 }
 
 .img-upload-button {
