@@ -17,24 +17,35 @@ class DB {
 
     this._db = firebase.database();
     this._storage = firebase.storage();
+
+    this.metadata = this._getImageMetadata();
   }
 
-  getImageMetadata() {
+  putImage(file, nameProp, width, height) {
+    return this._storage.ref().child('images/' + file[nameProp]).put(file)
+      .then(snapshot => this._putImageMetadata(file.name, snapshot.downloadURL, file.width, file.height))
+      .catch(this._handleError);
+  }
+
+  // refreshImageMetadata() {
+  //   this.metadata = this._getImageMetadata();
+  // }
+
+  isFilenameDuplicate(filename) {
+    return this.metadata.then(metadata => !!metadata.find(imgObj => imgObj.filename === filename));
+  }
+
+  _getImageMetadata() {
     return this._db.ref('imageMetadata').once('value')
       .then(snapshot => snapshot.exists() ? snapshot.val() : [])
       .catch(this._handleError);
   }
 
-  putImage(file, width, height) {
-    return this._storage.ref().child('images/' + file.name).put(file)
-      .then(snapshot => this._putImageMetadata(file.name, snapshot.downloadURL, width, height))
-      .catch(this._handleError);
-  }
-
   _putImageMetadata(filename, url, width, height) {
     const newImgMetadata = {filename, url, width, height};
-    return this.getImageMetadata()
-      .then(metadata => db.ref('imageMetadata').set([...metadata, newImgMetadata]))
+    return this.metadata
+      .then(metadata => this._db.ref('imageMetadata').set([...metadata, newImgMetadata]))
+      //add another promise chain here to unpack the snapshot.....
       .catch(this._handleError);
   }
 

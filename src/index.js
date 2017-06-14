@@ -1,12 +1,9 @@
 import DB from './javascript/db.js';
 import Grid from './javascript/grid.js';
-//import './javascript/upload.js';
+import './javascript/upload.js';
 //import './javascript/reorder.js';
 import 'lazysizes';
 import 'animate.css';
-import 'dropzone';
-import '../node_modules/dropzone/dist/min/dropzone.min.css';
-import '../node_modules/dropzone/dist/min/basic.min.css';
 import move from 'move-js';
 import './index.css';
 
@@ -14,7 +11,7 @@ window.addEventListener("hashchange", ()=>{
   render(decodeURI(window.location.hash));
 });
 
-DB.getImageMetadata().then(metadata => {
+DB.metadata.then(metadata => {
   const grid = new Grid("grid", metadata);
 
   window.dispatchEvent(new HashChangeEvent('hashchange'));

@@ -6,7 +6,7 @@
   position: fixed;
   left: 0;
   top: 0;
-  z-index: 1;
+  z-index: 3;
   width: 100%;
   background-color: #333;
   overflow: hidden;
@@ -22,18 +22,18 @@
   font-size: 17px;
 }
 
+.nav-line {
+  position: fixed;
+  border-bottom: thin solid white;
+  width: 55px;
+  z-index: 3;
+}
+
 .page-content {
   position: absolute;
   width: calc(100% - 20px);
   height: 100%;
   top: 3.5em;
-}
-
-.nav-line {
-  position: absolute;
-  border-bottom: thin solid white;
-  width: 55px;
-  z-index: 1;
 }
 
 
@@ -102,7 +102,7 @@
 
 
 /*
-    Upload styles
+    Admin styles
 */
 
 .admin {
@@ -110,26 +110,33 @@
   top: 0;
 }
 
-.admin #upload,
-.admin #reorder,
-.admin .dropzone {
+.admin #img-upload,
+.admin #reorder {
   opacity: 0;
   z-index: 0;
   pointer-events: none;
 }
 
-.admin.visible #upload,
-.admin.visible #reorder,
-.admin.visible .dropzone {
+.admin.visible #img-upload,
+.admin.visible #reorder{
   opacity: 1;
   z-index: 1;
   pointer-events: auto;
 }
 
+.img-upload {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 
-.img-preview {
+.img-upload-preview {
     width: 200px;
     height: auto;
+}
+
+.img-upload-button {
+  align-self: flex-end;
 }
 
 /*
@@ -138,11 +145,11 @@
 
 */
 
-.modal {
+.modal-container {
   display: none;
   position: fixed;
-  z-index: 1;
-  padding-top: 100px;
+  z-index: 4;
+  padding-top: 4em;
   left: 0;
   top: 0;
   width: 100%;
@@ -154,8 +161,8 @@
 .modal-content {
   margin: auto;
   display: block;
-  width: 90%;
-  max-width: 100vw;
+  max-width: 90vw;
+  max-height: 90vh;
 }
 
 .close {
@@ -174,17 +181,3 @@
     text-decoration: none;
     cursor: pointer;
 }
-
-/*
-
-  Page styles
-
-*/
-
-/*.hidden {
- visibility: hidden;
-}
-
-.visible {
-  visibility: visible;
-}*/

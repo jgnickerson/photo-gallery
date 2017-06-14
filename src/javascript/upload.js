@@ -1,50 +1,38 @@
-import {db, storage, metadataPromise} from './db.js';
+import DB from './db.js';
 
-const imgInput = document.createElement('input');
-imgInput.type = 'file';
+const imgInput = document.getElementById('img-upload-input');
+const imgPreview = document.getElementById('img-upload-preview');
+const imgRename = document.getElementById('img-upload-rename');
+const uploadButton = document.getElementById('img-upload-button');
 
-const imgPreview = document.createElement('img');
-imgPreview.className = "img-preview";
-
-const uploadButton = document.createElement('button');
-uploadButton.textContent = "Upload";
-uploadButton.className = "button";
-uploadButton.onclick = () => {
-  const img = imgInput.files[0];
-  if (img) {
-    storage.ref().child('images/' + img.name).put(img)
-    .then(snapshot => {
-      const newImgMetadata = {filename: img.name, url: snapshot.downloadURL, width: imgPreview.naturalWidth, height: imgPreview.naturalHeight};
-      metadataPromise.then(metadataSnapshot => {
-        const newMetadataArray = [];
-        if (metadataSnapshot.val()) {
-          newMetadataArray.push(...metadataSnapshot.val());
-        }
-        newMetadataArray.push(newImgMetadata);
-        db.ref('imageMetadata').set(newMetadataArray);
-      })
-    })
-  } else {
-    console.log("please select a file");
-  }
-}
-
-imgInput.onchange = () => {
+imgInput.addEventListener("change", () => {
   let file = imgInput.files[0];
   let reader = new FileReader();
 
+  imgRename.addEventListener('change', () => { file.newName = imgRename.value });
+
   reader.addEventListener('load', ()=> {
     imgPreview.src = reader.result;
-
+    imgRename.value = file.name;
+    file.newName = file.name;
+    file.width = imgPreview.naturalWidth;
+    file.height = imgPreview.naturalHeight;
   });
 
   if (file) {
     reader.readAsDataURL(file);
   }
-}
+});
 
-const container = document.getElementById("upload");
-
-// container.appendChild(imgInput);
-// container.appendChild(imgPreview);
-// container.appendChild(uploadButton);
+uploadButton.addEventListener("click", () => {
+  const img = imgInput.files[0];
+  DB.isFilenameDuplicate(img.newName).then(isDuplicate => {
+    if (isDuplicate) {
+      alert("Duplicate Filename. Please Rename");
+    } else {
+      DB.putImage(img, img.newName).then(()=>{
+        alert("success");
+      });
+    }
+  });
+});

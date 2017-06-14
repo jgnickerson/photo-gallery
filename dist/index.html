@@ -13,8 +13,13 @@
   <div class="page-content">
     <div class="grid page" id="grid"></div>
     <div class="admin page">
-      <div id="upload"></div>
-      <form class="dropzone" action="#"></form>
+      <div class="img-upload" id="img-upload">
+        <h2>Upload a New Picture</h2>
+        <input type="file" id="img-upload-input"/>
+        <img src="" class="img-upload-preview" id="img-upload-preview" />
+        <label>Filename<input class="img-upload-rename" type="text" id="img-upload-rename"/></label>
+        <button class="btn img-upload-button" id="img-upload-button">Upload</button>
+      </div>
       <div id="reorder"></div>
     </div>
   </div>
